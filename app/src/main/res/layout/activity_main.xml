@@ -12,6 +12,7 @@
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        tools:viewBindingIgnore="true"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -82,6 +83,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/design_default_color_primary_dark"
+        tools:viewBindingIgnore="true"
         app:itemTextColor="@android:color/white"
         app:itemIconTint="@android:color/white"
         app:labelVisibilityMode="labeled"
