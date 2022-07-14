@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">dvmProject8</string>
+    <string name="link">Картинки взяты с https://www.movieposters.com/</string>
+    <string name="btn_menu_prof">Профиль</string>
+    <string name="btn_menu_afisha">Сегодня в кино</string>
+    <string name="btn_menu_film">Буду смотреть</string>
+    <string name="btn_menu_load">Загрузки</string>
+    <string name="btn_menu_about">О приложении</string>
+    <string name="menu_settings_title">Меню настроек</string>
+    <string name="menu_favorites_title">Избранное</string>
+    <string name="menu_watch_later_title">История просмотров</string>
+    <string name="menu_selections_title">Мои фильмы</string>
 </resources>
