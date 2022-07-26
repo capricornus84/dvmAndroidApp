@@ -91,76 +91,16 @@
         app:menu="@menu/top_app_bar" />
 
 
-        <GridLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/main_recycler"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_margin="16dp"
-            android:columnCount="2"
-            android:orientation="horizontal"
-            android:useDefaultMargins="true"
-            android:layout_gravity="center"
-            android:layoutAnimation="@anim/posteranim"
             app:layout_constraintTop_toBottomOf="@+id/textView"
             app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
+            app:layout_constraintRight_toRightOf="parent"
+            tools:listitem="@layout/film_item"/>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/americanpsy"
-                android:layout_width="150dp"
-                android:layout_height="200dp"
-                app:cardCornerRadius="15dp">
-                <ImageView
-                    android:src="@drawable/americanpsycho"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:stateListAnimator="@animator/pressbut"
-                    android:scaleType="centerCrop"/>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/raider"
-                android:layout_width="150dp"
-                android:layout_height="200dp"
-                app:cardCornerRadius="15dp">
-                <ImageView
-                    android:src="@drawable/raidersofthelostark"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:stateListAnimator="@animator/pressbut"
-                    android:scaleType="centerCrop"/>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/jurassic"
-                android:layout_width="150dp"
-                android:layout_height="200dp"
-                app:cardCornerRadius="15dp">
-                <ImageView
-                    android:src="@drawable/jurassicpark"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:stateListAnimator="@animator/pressbut"
-                    android:scaleType="centerCrop"/>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/scream"
-                android:layout_width="150dp"
-                android:layout_height="200dp"
-                app:cardCornerRadius="15dp">
-                <ImageView
-                    android:src="@drawable/scream"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:stateListAnimator="@animator/pressbut"
-                    android:scaleType="centerCrop"/>
-            </androidx.cardview.widget.CardView>
-
-        </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
