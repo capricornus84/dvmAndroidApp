@@ -10,4 +10,8 @@
     <string name="menu_favorites_title">Избранное</string>
     <string name="menu_watch_later_title">История просмотров</string>
     <string name="menu_selections_title">Мои фильмы</string>
+    <string name="page_title">Заголовок</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
