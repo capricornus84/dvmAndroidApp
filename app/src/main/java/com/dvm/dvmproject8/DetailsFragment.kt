@@ -6,39 +6,42 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil.setContentView
+import androidx.databinding.DataBindingUtil.setDefaultComponent
 import androidx.fragment.app.Fragment
-import com.dvm.dvmproject8.databinding.ActivityMainBinding
+import com.dvm.dvmproject8.databinding.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_details.*
+import com.dvm.dvmproject8.databinding.FragmentDetailsBinding
+import kotlinx.android.synthetic.main.film_item.*
 
 class DetailsFragment : Fragment() {
 
-    private  lateinit var binding: ActivityMainBinding
+    private lateinit var fragbinding: FragmentDetailsBinding
     private lateinit var film: Film
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_details, container, false)
+        fragbinding = FragmentDetailsBinding.inflate(layoutInflater, container, false)
+        return fragbinding.root//inflater.inflate(R.layout.fragment_details, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setFilmsDetails()
-
-        details_fab_favorites.setOnClickListener {
+        fragbinding.detailsFabFavorites.setOnClickListener {
             if (!film.isInFavorites) {
-                details_fab_favorites.setImageResource(R.drawable.ic_round_favorite)
+                fragbinding.detailsFabFavorites.setImageResource(R.drawable.ic_round_favorite)
                 film.isInFavorites = true
             } else {
-                details_fab_favorites.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                fragbinding.detailsFabFavorites.setImageResource(R.drawable.ic_baseline_favorite_border_24)
                 film.isInFavorites = false
             }
         }
-
-        details_fab_share.setOnClickListener {
+        fragbinding.detailsFabShare.setOnClickListener {
             //Создаем интент
             val intent = Intent()
             //Укзываем action с которым он запускается
@@ -59,16 +62,15 @@ class DetailsFragment : Fragment() {
     private fun setFilmsDetails() {
 
         //Получаем наш фильм из переданного бандла
-        val film = arguments?.get("film") as Film
+        film = arguments?.get("film") as Film
 
         //Устанавливаем заголовок
-        details_toolbar.title = film.title
+        fragbinding.detailsToolbar.title = film.title
         //Устанавливаем картинку
-        details_poster.setImageResource(film.poster)
+        fragbinding.detailsPoster.setImageResource(film.poster)
         //Устанавливаем описание
-        details_description.text = film.description
-
-        details_fab_favorites.setImageResource(
+        fragbinding.detailsDescription.text = film.description
+        fragbinding.detailsFabFavorites.setImageResource(
             if (film.isInFavorites) R.drawable.ic_round_favorite
             else R.drawable.ic_baseline_favorite_border_24
         )
