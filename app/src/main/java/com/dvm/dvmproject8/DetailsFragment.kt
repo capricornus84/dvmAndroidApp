@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_details.*
 class DetailsFragment : Fragment() {
 
     private  lateinit var binding: ActivityMainBinding
-    private lateinit var film: HomeFragment.Film
+    private lateinit var film: Film
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,7 +59,7 @@ class DetailsFragment : Fragment() {
     private fun setFilmsDetails() {
 
         //Получаем наш фильм из переданного бандла
-        val film = arguments?.get("film") as HomeFragment.Film
+        val film = arguments?.get("film") as Film
 
         //Устанавливаем заголовок
         details_toolbar.title = film.title

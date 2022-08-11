@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun launchDetailsFragment(film: HomeFragment.Film) {
+    fun launchDetailsFragment(film: Film) {
         //Создаем "посылку"
         val bundle = Bundle()
         //Кладем наш фильм в "посылку"

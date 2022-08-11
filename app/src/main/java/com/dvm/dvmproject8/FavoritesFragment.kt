@@ -24,11 +24,11 @@ class FavoritesFragment : Fragment() {
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
             //Получаем список при транзакции фрагмента
-            val favoritesList: List<HomeFragment.Film> = emptyList()
+            val favoritesList: List<Film> = emptyList()
 
             favorites_recycler.apply {
                 filmsAdapter = FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener{
-                    override fun click(film: HomeFragment.Film) {
+                    override fun click(film: Film) {
                         (requireActivity() as MainActivity).launchDetailsFragment(film)
                     }
                 })

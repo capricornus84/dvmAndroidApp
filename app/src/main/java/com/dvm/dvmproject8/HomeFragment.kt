@@ -16,13 +16,6 @@ import kotlinx.android.synthetic.main.fragment_home.*
 class HomeFragment : Fragment() {
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
 
-    @Parcelize
-    data class Film(
-        val title: String,
-        val poster: Int,
-        val description: String,
-        var isInFavorites: Boolean = false
-    ) : Parcelable
 
     val filmsDataBase = listOf(
         Film("American psycho", R.drawable.americanpsycho, "A wealthy New York City investment banking executive, Patrick Bateman, hides his alternate psychopathic ego from his co-workers and friends as he delves deeper into his violent, hedonistic fantasies."),

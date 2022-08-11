@@ -13,7 +13,7 @@ class FilmViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val description = itemView.findViewById<TextView>(R.id.description)
 
     //В этом методе кладем данные из Film в наши View
-    fun bind(film: HomeFragment.Film) {
+    fun bind(film: Film) {
         //Устанавливаем заголовок
         title.text = film.title
         //Устанавливаем постер
