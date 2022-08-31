@@ -14,4 +14,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_favorites_title_text">Избранное</string>
+    <string name="menu_watch_later_title_text">Посмотреть позже</string>
+    <string name="menu_selections_title_text">Подборки</string>
+    <string name="menu_home_title_text">Главная</string>
 </resources>
