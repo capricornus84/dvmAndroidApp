@@ -13,7 +13,7 @@ import com.dvm.dvmproject8.databinding.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_details.*
 import com.dvm.dvmproject8.databinding.FragmentDetailsBinding
-import kotlinx.android.synthetic.main.film_item.*
+import kotlinx.android.synthetic.main.fragment_details.*
 
 class DetailsFragment : Fragment() {
 
