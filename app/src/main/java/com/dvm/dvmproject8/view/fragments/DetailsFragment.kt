@@ -1,19 +1,14 @@
-package com.dvm.dvmproject8
+package com.dvm.dvmproject8.view.fragments
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil.setContentView
-import androidx.databinding.DataBindingUtil.setDefaultComponent
 import androidx.fragment.app.Fragment
-import com.dvm.dvmproject8.databinding.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_details.*
+import com.dvm.dvmproject8.R
 import com.dvm.dvmproject8.databinding.FragmentDetailsBinding
-import kotlinx.android.synthetic.main.fragment_details.*
+import com.dvm.dvmproject8.domain.Film
 
 class DetailsFragment : Fragment() {
 

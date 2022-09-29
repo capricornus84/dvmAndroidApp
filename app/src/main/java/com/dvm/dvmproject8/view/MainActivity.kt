@@ -1,18 +1,16 @@
-package com.dvm.dvmproject8
+package com.dvm.dvmproject8.view
 
-import android.content.Intent
-import android.content.res.Resources
-import android.graphics.Rect
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcelable
-import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.dvm.dvmproject8.HomeFragment
+import com.dvm.dvmproject8.R
 import com.dvm.dvmproject8.databinding.ActivityMainBinding
-import kotlinx.android.parcel.Parcelize
+import com.dvm.dvmproject8.domain.Film
+import com.dvm.dvmproject8.view.fragments.DetailsFragment
+import com.dvm.dvmproject8.view.fragments.FavoritesFragment
+import com.dvm.dvmproject8.view.fragments.SelectionsFragment
+import com.dvm.dvmproject8.view.fragments.WatchLaterFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 

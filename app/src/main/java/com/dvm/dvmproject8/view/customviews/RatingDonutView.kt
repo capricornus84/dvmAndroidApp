@@ -1,9 +1,10 @@
-package com.dvm.dvmproject8
+package com.dvm.dvmproject8.view.customviews
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import com.dvm.dvmproject8.R
 
 class RatingDonutView @JvmOverloads constructor(context: Context, attributeSet: AttributeSet? = null) : View(context, attributeSet)
 {

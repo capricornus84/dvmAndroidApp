@@ -1,4 +1,4 @@
-package com.dvm.dvmproject8
+package com.dvm.dvmproject8.utils
 
 import android.app.Activity
 import android.view.View

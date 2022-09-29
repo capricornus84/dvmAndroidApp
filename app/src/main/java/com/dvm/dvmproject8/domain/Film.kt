@@ -1,4 +1,4 @@
-package com.dvm.dvmproject8
+package com.dvm.dvmproject8.domain
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
