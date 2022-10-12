@@ -2,6 +2,7 @@ package com.dvm.dvmproject8.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract.CommonDataKinds.Website.URL
 import androidx.fragment.app.Fragment
 import com.dvm.dvmproject8.HomeFragment
 import com.dvm.dvmproject8.R
@@ -11,7 +12,13 @@ import com.dvm.dvmproject8.view.fragments.DetailsFragment
 import com.dvm.dvmproject8.view.fragments.FavoritesFragment
 import com.dvm.dvmproject8.view.fragments.SelectionsFragment
 import com.dvm.dvmproject8.view.fragments.WatchLaterFragment
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.net.URL
+import java.util.concurrent.Executors
+import javax.net.ssl.HttpsURLConnection
 
 
 class MainActivity : AppCompatActivity() {
@@ -32,7 +39,19 @@ class MainActivity : AppCompatActivity() {
             .add(R.id.fragment_placeholder, HomeFragment())
             .addToBackStack(null)
             .commit()
-
+        Executors.newSingleThreadExecutor().execute {
+            val url = URL("https://reqres.in/api/users/2")
+            val connection = url.openConnection() as HttpsURLConnection
+            val gson = Gson();
+            try {
+                val br = BufferedReader(InputStreamReader(connection.inputStream))
+                val line = br.readLine()
+                val pers = gson.fromJson(line, Person::class.java)
+                println("!!! ${pers.data}")
+            } finally {
+                connection.disconnect()
+            }
+        }
     }
 
     fun launchDetailsFragment(film: Film) {

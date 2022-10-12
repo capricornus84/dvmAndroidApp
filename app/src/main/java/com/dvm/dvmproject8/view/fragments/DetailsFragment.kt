@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.dvm.dvmproject8.R
+import com.dvm.dvmproject8.data.ApiConstants
 import com.dvm.dvmproject8.databinding.FragmentDetailsBinding
 import com.dvm.dvmproject8.domain.Film
 
@@ -62,7 +64,11 @@ class DetailsFragment : Fragment() {
         //Устанавливаем заголовок
         fragbinding.detailsToolbar.title = film.title
         //Устанавливаем картинку
-        fragbinding.detailsPoster.setImageResource(film.poster)
+        //fragbinding.detailsPoster.setImageResource(film.poster)
+        Glide.with(this)
+            .load(ApiConstants.IMAGES_URL + "w780" + film.poster)
+            .centerCrop()
+            .into(fragbinding.detailsPoster)
         //Устанавливаем описание
         fragbinding.detailsDescription.text = film.description
         fragbinding.detailsFabFavorites.setImageResource(
