@@ -41,6 +41,7 @@ android {
     androidExtensions {
         experimental = true
     }
+    namespace 'com.dvm.dvmproject8'
 
 }
 
