@@ -7,6 +7,9 @@ import com.dvm.dvmproject8.data.MainRepository
 import com.dvm.dvmproject8.data.TmdbApi
 import com.dvm.dvmproject8.di.AppComponent
 import com.dvm.dvmproject8.di.DaggerAppComponent
+import com.dvm.dvmproject8.di.modules.DatabaseModule
+import com.dvm.dvmproject8.di.modules.DomainModule
+import com.dvm.dvmproject8.di.modules.RemoteModule
 
 class App : Application() {
     lateinit var dagger: AppComponent
@@ -15,8 +18,13 @@ class App : Application() {
         super.onCreate()
         instance = this
         //Создаем компонент
-        dagger = DaggerAppComponent.create()
-        }
+        dagger = DaggerAppComponent.builder()
+            .remoteModule(RemoteModule())
+            .databaseModule(DatabaseModule())
+            .domainModule(DomainModule(this))
+            .build()
+    }
+
     companion object {
         lateinit var instance: App
             private set

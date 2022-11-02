@@ -4,14 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Website.URL
 import androidx.fragment.app.Fragment
-import com.dvm.dvmproject8.HomeFragment
 import com.dvm.dvmproject8.R
 import com.dvm.dvmproject8.databinding.ActivityMainBinding
 import com.dvm.dvmproject8.domain.Film
-import com.dvm.dvmproject8.view.fragments.DetailsFragment
-import com.dvm.dvmproject8.view.fragments.FavoritesFragment
-import com.dvm.dvmproject8.view.fragments.SelectionsFragment
-import com.dvm.dvmproject8.view.fragments.WatchLaterFragment
+import com.dvm.dvmproject8.view.fragments.*
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.BufferedReader
@@ -39,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             .add(R.id.fragment_placeholder, HomeFragment())
             .addToBackStack(null)
             .commit()
-        Executors.newSingleThreadExecutor().execute {
+        /*Executors.newSingleThreadExecutor().execute {
             val url = URL("https://reqres.in/api/users/2")
             val connection = url.openConnection() as HttpsURLConnection
             val gson = Gson();
@@ -51,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             } finally {
                 connection.disconnect()
             }
-        }
+        }*/
     }
 
     fun launchDetailsFragment(film: Film) {
@@ -101,6 +97,12 @@ class MainActivity : AppCompatActivity() {
                     val tag = "selections"
                     val fragment = checkFragmentExistence(tag)
                     changeFragment( fragment?: SelectionsFragment(), tag)
+                    true
+                }
+                R.id.settings -> {
+                    val tag = "settings"
+                    val fragment = checkFragmentExistence(tag)
+                    changeFragment( fragment?: SettingsFragment(), tag)
                     true
                 }
                 else -> false
