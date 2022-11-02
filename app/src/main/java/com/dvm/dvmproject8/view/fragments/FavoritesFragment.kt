@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dvm.dvmproject8.view.rv_adapters.FilmListRecyclerAdapter
 import com.dvm.dvmproject8.view.MainActivity
-import com.dvm.dvmproject8.TopSpacingItemDecoration
+//import com.dvm.dvmproject8.TopSpacingItemDecoration
 import com.dvm.dvmproject8.databinding.FragmentFavoritesBinding
 import com.dvm.dvmproject8.domain.Film
 import com.dvm.dvmproject8.utils.AnimationHelper
@@ -24,6 +24,7 @@ class FavoritesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        println("onCreateView fav")
         // Inflate the layout for this fragment
         favFragBinding = FragmentFavoritesBinding.inflate(layoutInflater, container, false)
         return favFragBinding.root
@@ -33,9 +34,9 @@ class FavoritesFragment : Fragment() {
             super.onViewCreated(view, savedInstanceState)
             //Получаем список при транзакции фрагмента
             val favoritesList: List<Film> = emptyList()
-
+            println("onViewCreated fav1")
             AnimationHelper.performFragmentCircularRevealAnimation(favorites_fragment_root, requireActivity(),2)
-
+            println("onViewCreated fav2")
             favFragBinding.favoritesRecycler.apply {
                 filmsAdapter = FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener {
                     override fun click(film: Film) {

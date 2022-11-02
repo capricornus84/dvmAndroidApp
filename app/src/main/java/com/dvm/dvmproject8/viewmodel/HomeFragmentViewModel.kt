@@ -2,6 +2,7 @@ package com.dvm.dvmproject8.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider.NewInstanceFactory.Companion.instance
 import com.dvm.dvmproject8.App
 import com.dvm.dvmproject8.domain.Film
 import com.dvm.dvmproject8.domain.Interactor
@@ -18,6 +19,10 @@ class HomeFragmentViewModel : ViewModel() {
 
     init {
         App.instance.dagger.inject(this)
+        getFilms()
+    }
+
+    fun getFilms() {
         interactor.getFilmsFromApi(1, object : ApiCallback {
             override fun onSuccess(films: List<Film>) {
                 filmsListLiveData.postValue(films)
@@ -27,6 +32,7 @@ class HomeFragmentViewModel : ViewModel() {
             }
         })
     }
+
     interface ApiCallback {
         fun onSuccess(films: List<Film>)
         fun onFailure()
