@@ -6,7 +6,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.dvm.dvmproject8.view.rv_viewholders.FilmViewHolder
 import com.dvm.dvmproject8.R
-import com.dvm.dvmproject8.domain.Film
+import com.dvm.dvmproject8.data.Entity.Film
 
 //в параметр передаем слушатель, чтобы мы потом могли обрабатывать нажатия из класса Activity
 class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

@@ -2,10 +2,10 @@ package com.dvm.dvmproject8.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider.NewInstanceFactory.Companion.instance
 import com.dvm.dvmproject8.App
-import com.dvm.dvmproject8.domain.Film
+import com.dvm.dvmproject8.data.Entity.Film
 import com.dvm.dvmproject8.domain.Interactor
+import java.util.concurrent.Executors
 //import org.koin.core.KoinComponent
 import javax.inject.Inject
 
@@ -29,6 +29,10 @@ class HomeFragmentViewModel : ViewModel() {
             }
 
             override fun onFailure() {
+                //filmsListLiveData.postValue(interactor.getFilmsFromDB())
+                Executors.newSingleThreadExecutor().execute {
+                    filmsListLiveData.postValue(interactor.getFilmsFromDB())
+                }
             }
         })
     }

@@ -2,19 +2,12 @@ package com.dvm.dvmproject8.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Website.URL
 import androidx.fragment.app.Fragment
 import com.dvm.dvmproject8.R
 import com.dvm.dvmproject8.databinding.ActivityMainBinding
-import com.dvm.dvmproject8.domain.Film
+import com.dvm.dvmproject8.data.Entity.Film
 import com.dvm.dvmproject8.view.fragments.*
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.net.URL
-import java.util.concurrent.Executors
-import javax.net.ssl.HttpsURLConnection
 
 
 class MainActivity : AppCompatActivity() {
@@ -115,6 +108,7 @@ class MainActivity : AppCompatActivity() {
     private fun checkFragmentExistence(tag: String): Fragment? = supportFragmentManager.findFragmentByTag(tag)
 
     private fun changeFragment(fragment: Fragment, tag: String) {
+
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_placeholder, fragment, tag)
