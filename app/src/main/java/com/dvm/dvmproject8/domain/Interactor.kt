@@ -33,4 +33,6 @@ class Interactor(private val repo: MainRepository, private val retrofitService: 
     }
     //Метод для получения настроек
     fun getDefaultCategoryFromPreferences() = preferences.geDefaultCategory()
+
+    fun getFilmsFromDB(): List<Film> = repo.getAllFromDB()
 }
