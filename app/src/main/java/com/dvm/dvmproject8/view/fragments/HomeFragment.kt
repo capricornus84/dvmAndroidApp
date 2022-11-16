@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dvm.dvmproject8.databinding.FragmentHomeBinding
-import com.dvm.dvmproject8.domain.Film
+import com.dvm.dvmproject8.data.Entity.Film
 import com.dvm.dvmproject8.utils.AnimationHelper
 import com.dvm.dvmproject8.view.MainActivity
 import com.dvm.dvmproject8.view.rv_adapters.FilmListRecyclerAdapter

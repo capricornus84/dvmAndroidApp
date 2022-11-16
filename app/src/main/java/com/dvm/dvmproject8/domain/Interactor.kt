@@ -1,6 +1,7 @@
 package com.dvm.dvmproject8.domain
 
 import com.dvm.dvmproject8.API
+import com.dvm.dvmproject8.data.Entity.Film
 import com.dvm.dvmproject8.data.Entity.TmdbResults
 import com.dvm.dvmproject8.data.MainRepository
 import com.dvm.dvmproject8.data.TmdbApi
@@ -18,7 +19,10 @@ class Interactor(private val repo: MainRepository, private val retrofitService: 
         retrofitService.getFilms(getDefaultCategoryFromPreferences(), API.KEY, "ru-RU", page).enqueue(object : Callback<TmdbResults> {
             override fun onResponse(call: Call<TmdbResults>, response: Response<TmdbResults>) {
                 //При успехе мы вызываем метод передаем onSuccess и в этот коллбэк список фильмов
-                callback.onSuccess(Converter.convertApiListToDTOList(response.body()?.tmdbFilms))
+                val list = Converter.convertApiListToDTOList(response.body()?.tmdbFilms)
+                //Кладем фильмы в бд
+                repo.putToDb(list)
+                callback.onSuccess(list)
             }
 
             override fun onFailure(call: Call<TmdbResults>, t: Throwable) {

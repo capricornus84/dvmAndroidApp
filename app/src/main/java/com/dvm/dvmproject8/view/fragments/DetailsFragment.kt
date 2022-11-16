@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.dvm.dvmproject8.R
 import com.dvm.dvmproject8.data.ApiConstants
 import com.dvm.dvmproject8.databinding.FragmentDetailsBinding
-import com.dvm.dvmproject8.domain.Film
+import com.dvm.dvmproject8.data.Entity.Film
 
 class DetailsFragment : Fragment() {
 
@@ -22,7 +22,7 @@ class DetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         fragbinding = FragmentDetailsBinding.inflate(layoutInflater, container, false)
-        return fragbinding.root//inflater.inflate(R.layout.fragment_details, container, false)
+        return fragbinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

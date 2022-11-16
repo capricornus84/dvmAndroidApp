@@ -10,7 +10,7 @@ import com.dvm.dvmproject8.view.rv_adapters.FilmListRecyclerAdapter
 import com.dvm.dvmproject8.view.MainActivity
 //import com.dvm.dvmproject8.TopSpacingItemDecoration
 import com.dvm.dvmproject8.databinding.FragmentFavoritesBinding
-import com.dvm.dvmproject8.domain.Film
+import com.dvm.dvmproject8.data.Entity.Film
 import com.dvm.dvmproject8.utils.AnimationHelper
 import kotlinx.android.synthetic.main.fragment_favorites.*
 
