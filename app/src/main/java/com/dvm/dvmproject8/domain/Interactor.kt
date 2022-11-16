@@ -1,5 +1,6 @@
 package com.dvm.dvmproject8.domain
 
+import androidx.lifecycle.LiveData
 import com.dvm.dvmproject8.API
 import com.dvm.dvmproject8.data.Entity.Film
 import com.dvm.dvmproject8.data.Entity.TmdbResults
@@ -22,7 +23,7 @@ class Interactor(private val repo: MainRepository, private val retrofitService: 
                 val list = Converter.convertApiListToDTOList(response.body()?.tmdbFilms)
                 //Кладем фильмы в бд
                 repo.putToDb(list)
-                callback.onSuccess(list)
+                callback.onSuccess()
             }
 
             override fun onFailure(call: Call<TmdbResults>, t: Throwable) {
@@ -38,5 +39,5 @@ class Interactor(private val repo: MainRepository, private val retrofitService: 
     //Метод для получения настроек
     fun getDefaultCategoryFromPreferences() = preferences.geDefaultCategory()
 
-    fun getFilmsFromDB(): List<Film> = repo.getAllFromDB()
+    fun getFilmsFromDB(): LiveData<List<Film>> = repo.getAllFromDB()
 }
