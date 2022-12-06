@@ -1,18 +1,12 @@
-package com.dvm.dvmproject8
+package com.dvm.dvmproject8.view
 
-import android.content.Intent
-import android.content.res.Resources
-import android.graphics.Rect
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcelable
-import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.dvm.dvmproject8.R
 import com.dvm.dvmproject8.databinding.ActivityMainBinding
-import kotlinx.android.parcel.Parcelize
+import com.dvm.dvmproject8.data.Entity.Film
+import com.dvm.dvmproject8.view.fragments.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -34,7 +28,19 @@ class MainActivity : AppCompatActivity() {
             .add(R.id.fragment_placeholder, HomeFragment())
             .addToBackStack(null)
             .commit()
-
+        /*Executors.newSingleThreadExecutor().execute {
+            val url = URL("https://reqres.in/api/users/2")
+            val connection = url.openConnection() as HttpsURLConnection
+            val gson = Gson();
+            try {
+                val br = BufferedReader(InputStreamReader(connection.inputStream))
+                val line = br.readLine()
+                val pers = gson.fromJson(line, Person::class.java)
+                println("!!! ${pers.data}")
+            } finally {
+                connection.disconnect()
+            }
+        }*/
     }
 
     fun launchDetailsFragment(film: Film) {
@@ -86,6 +92,12 @@ class MainActivity : AppCompatActivity() {
                     changeFragment( fragment?: SelectionsFragment(), tag)
                     true
                 }
+                R.id.settings -> {
+                    val tag = "settings"
+                    val fragment = checkFragmentExistence(tag)
+                    changeFragment( fragment?: SettingsFragment(), tag)
+                    true
+                }
                 else -> false
             }
         }
@@ -96,6 +108,7 @@ class MainActivity : AppCompatActivity() {
     private fun checkFragmentExistence(tag: String): Fragment? = supportFragmentManager.findFragmentByTag(tag)
 
     private fun changeFragment(fragment: Fragment, tag: String) {
+
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_placeholder, fragment, tag)
