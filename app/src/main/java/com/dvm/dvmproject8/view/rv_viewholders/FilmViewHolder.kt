@@ -1,13 +1,10 @@
 package com.dvm.dvmproject8.view.rv_viewholders
 
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.dvm.dvmproject8.R
 import com.dvm.dvmproject8.data.ApiConstants
-import com.dvm.dvmproject8.domain.Film
+import com.dvm.dvmproject8.data.Entity.Film
 import kotlinx.android.synthetic.main.film_item.view.*
 
 //В конструктор класс передается layout, который мы создали(film_item.xml)
