@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/drawable/background_favorites.xml" value="0.117" />
+        <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/drawable/background_home.xml" value="0.117" />
+        <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/drawable/background_main.xml" value="0.117" />
+        <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/drawable/background_selections.xml" value="0.117" />
+        <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/drawable/background_watch_later.xml" value="0.117" />
         <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/drawable/custome_background.xml" value="0.14666666666666667" />
         <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/drawable/ic_baseline_menu.xml" value="0.1535" />
         <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1535" />
@@ -10,19 +15,23 @@
         <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/drawable/ic_round_favorite.xml" value="0.117" />
         <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/drawable/shape.xml" value="0.1535" />
         <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/layout/activity_details.xml" value="0.1802536231884058" />
-        <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/layout/activity_main.xml" value="0.2758152173913043" />
+        <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/layout/film_item.xml" value="0.21603260869565216" />
         <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/layout/fragment_details.xml" value="0.1802536231884058" />
         <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/layout/fragment_favorites.xml" value="0.1802536231884058" />
         <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/layout/fragment_selections.xml" value="0.1802536231884058" />
+        <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/layout/fragment_watch_later.xml" value="0.1802536231884058" />
         <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/layout/merge_home_screen_content.xml" value="0.1802536231884058" />
+        <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/layout/ratingdonutview.xml" value="0.1802536231884058" />
+        <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/menu/navigation_menu.xml" value="0.2222222222222222" />
         <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/menu/settings.xml" value="0.19010416666666666" />
         <entry key="..\:/Documents/AndroidProject/dvmProject8/app/src/main/res/menu/top_app_bar.xml" value="0.2222222222222222" />
         <entry key="..\:/Documents/android/dvmProject8/app/src/main/res/layout/activity_main.xml" value="0.2758152173913043" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
