@@ -1,45 +1,48 @@
-package com.dvm.dvmproject8
+package com.dvm.dvmproject8.view.fragments
 
-import android.animation.LayoutTransition
 import android.content.res.Resources
 import android.graphics.Rect
 import android.os.Bundle
-import android.os.Parcelable
-import android.transition.*
-import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
-import androidx.databinding.DataBindingUtil.setContentView
+import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.dvm.dvmproject8.databinding.ActivityMainBinding
 import com.dvm.dvmproject8.databinding.FragmentHomeBinding
-import kotlinx.android.parcel.Parcelize
+import com.dvm.dvmproject8.data.Entity.Film
+import com.dvm.dvmproject8.utils.AnimationHelper
+import com.dvm.dvmproject8.view.MainActivity
+import com.dvm.dvmproject8.view.rv_adapters.FilmListRecyclerAdapter
+import com.dvm.dvmproject8.viewmodel.HomeFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.merge_home_screen_content.*
 import java.util.*
-import kotlinx.android.synthetic.main.fragment_favorites.*
 
 
 class HomeFragment : Fragment() {
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
     //private lateinit var adapter: FilmListRecyclerAdapter
     //private lateinit var layoutManager: LinearLayoutManager
+    private lateinit var homeFragBinding: FragmentHomeBinding
 
-    val filmsDataBase = listOf(
-        Film("American psycho", R.drawable.americanpsycho, "A wealthy New York City investment banking executive, Patrick Bateman, hides his alternate psychopathic ego from his co-workers and friends as he delves deeper into his violent, hedonistic fantasies.", 7.5f),
-        Film("Back to the Future", R.drawable.backtothefuture, "Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his close friend, the eccentric scientist Doc Brown.", 6.6f),
-        Film("Jurassic Park", R.drawable.jurassicpark, "A pragmatic paleontologist touring an almost complete theme park on an island in Central America is tasked with protecting a couple of kids after a power failure causes the park's cloned dinosaurs to run loose.", 5.6f),
-        Film("Pulp Fiction", R.drawable.pulpfiction, "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.", 7.0f),
-        Film("Raiders of the lost ark", R.drawable.raidersofthelostark, "Archaeology professor Indiana Jones ventures to seize a biblical artefact known as the Ark of the Covenant. While doing so, he puts up a fight against Renee and a troop of Nazis.", 6.8f),
-        Film("Scream", R.drawable.scream, "A year after the murder of her mother, a teenage girl is terrorized by a new killer, who targets the girl and her friends by using horror films as part of a deadly game.", 8.0f),
-        Film("Star Wars", R.drawable.starwars, "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth Vader.", 8.1f),
-    )
+    private val viewModel by lazy {
+        ViewModelProvider.NewInstanceFactory().create(HomeFragmentViewModel::class.java)
+    }
 
-    private  lateinit var homeFragBinding: FragmentHomeBinding
+    private var filmsDataBase = listOf<Film>()
+        //Используем backing field
+        set(value) {
+            //Если придет такое же значение, то мы выходим из метода
+            if (field == value) return
+            //Если пришло другое значение, то кладем его в переменную
+            field = value
+            //Обновляем RV адаптер
+            filmsAdapter.addItems(field)
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,9 +52,9 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         homeFragBinding = FragmentHomeBinding.inflate(layoutInflater, container, false)
-        return homeFragBinding.root//return inflater.inflate(R.layout.fragment_home, container, false)
+        return homeFragBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -60,20 +63,39 @@ class HomeFragment : Fragment() {
         AnimationHelper.performFragmentCircularRevealAnimation(home_fragment_root, requireActivity(), 1)
 
         initSearchView()
-
+        initPullToRefresh()
         //находим наш RV
         initRecyckler()
         //Кладем нашу БД в RV
-        filmsAdapter.addItems(filmsDataBase)
+        //filmsAdapter.addItems(filmsDataBase)
+        viewModel.filmsListLiveData.observe(viewLifecycleOwner, Observer<List<Film>> {
+            filmsDataBase = it
+            filmsAdapter.addItems(it)
+        })
+        viewModel.showProgressBar.observe(viewLifecycleOwner, Observer<Boolean> {
+            homeFragBinding.progressBar.isVisible = it
+        })
+    }
+
+    private fun initPullToRefresh() {
+        //Вешаем слушатель, чтобы вызвался pull to refresh
+        homeFragBinding.pullToRefresh.setOnRefreshListener {
+            //Чистим адаптер(items нужно будет сделать паблик или создать для этого публичный метод)
+            filmsAdapter.items.clear()
+            //Делаем новый запрос фильмов на сервер
+            viewModel.getFilms()
+            //Убираем крутящиеся колечко
+            homeFragBinding.pullToRefresh.isRefreshing = false
+        }
     }
 
     private fun initSearchView() {
-        homeFragBinding.searchView.setOnClickListener {
-            homeFragBinding.searchView.isIconified = false
+        search_view.setOnClickListener {
+            search_view.isIconified = false
         }
 
         //Подключаем слушателя изменений введенного текста в поиска
-        homeFragBinding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        search_view.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             //Этот метод отрабатывает при нажатии кнопки "поиск" на софт клавиатуре
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
@@ -100,7 +122,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun initRecyckler() {
-        val apply = homeFragBinding.mainRecycler.apply {
+        main_recycler.apply {
             filmsAdapter =
                 FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener {
                     override fun click(film: Film) {

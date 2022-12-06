@@ -1,22 +1,17 @@
 package com.dvm.dvmproject8
 
-import android.view.View
-import androidx.appcompat.widget.SearchView
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.UiController
-import androidx.test.espresso.ViewAction
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.dvm.dvmproject8.view.MainActivity
+import com.dvm.dvmproject8.view.rv_viewholders.FilmViewHolder
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.util.EnumSet.allOf
-import java.util.regex.Matcher
 
 /**
  * Instrumented test, which will execute on an Android device.
