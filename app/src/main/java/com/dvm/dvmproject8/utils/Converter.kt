@@ -1,7 +1,7 @@
 package com.dvm.dvmproject8.utils
 
 import com.dvm.dvmproject8.data.Entity.TmdbFilm
-import com.dvm.dvmproject8.domain.Film
+import com.dvm.dvmproject8.data.Entity.Film
 
 object Converter {
     fun convertApiListToDTOList(list: List<TmdbFilm>?): List<Film> {
