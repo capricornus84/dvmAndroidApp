@@ -7,39 +7,31 @@ import com.dvm.dvmproject8.App
 import com.dvm.dvmproject8.data.Entity.Film
 import com.dvm.dvmproject8.domain.Interactor
 import java.util.concurrent.Executors
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.channels.Channel
 //import org.koin.core.KoinComponent
 import javax.inject.Inject
 
 //import org.koin.core.inject
 
 class HomeFragmentViewModel : ViewModel() {
-    val showProgressBar: MutableLiveData<Boolean> = MutableLiveData()
+    //val showProgressBar: MutableLiveData<Boolean> = MutableLiveData()
+
     //Инициализируем интерактор
     @Inject
     lateinit var interactor: Interactor
-    val filmsListLiveData: LiveData<List<Film>>
+    val filmsListData: Flow<List<Film>>
+    val showProgressBar: Channel<Boolean>
 
     init {
         App.instance.dagger.inject(this)
-        filmsListLiveData = interactor.getFilmsFromDB()
+        showProgressBar = interactor.progressBarState
+        filmsListData = interactor.getFilmsFromDB()
         getFilms()
     }
 
     fun getFilms() {
-        showProgressBar.postValue(true)
-        interactor.getFilmsFromApi(1, object : ApiCallback {
-            override fun onSuccess() {
-                showProgressBar.postValue(false)
-            }
-
-            override fun onFailure() {
-                showProgressBar.postValue(false)
-            }
-        })
+        interactor.getFilmsFromApi(1)
     }
 
-    interface ApiCallback {
-        fun onSuccess()
-        fun onFailure()
-    }
 }
