@@ -20,6 +20,7 @@ import com.dvm.dvmproject8.view.MainActivity
 import com.dvm.dvmproject8.view.rv_adapters.FilmListRecyclerAdapter
 import com.dvm.dvmproject8.viewmodel.HomeFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.*
 import java.util.*
 
 
@@ -28,6 +29,7 @@ class HomeFragment : Fragment() {
     //private lateinit var adapter: FilmListRecyclerAdapter
     //private lateinit var layoutManager: LinearLayoutManager
     private lateinit var homeFragBinding: FragmentHomeBinding
+    private lateinit var scope: CoroutineScope
 
     private val viewModel by lazy {
         ViewModelProvider.NewInstanceFactory().create(HomeFragmentViewModel::class.java)
@@ -59,7 +61,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         AnimationHelper.performFragmentCircularRevealAnimation(home_fragment_root, requireActivity(), 1)
 
         initSearchView()
@@ -68,13 +69,29 @@ class HomeFragment : Fragment() {
         initRecyckler()
         //Кладем нашу БД в RV
         //filmsAdapter.addItems(filmsDataBase)
-        viewModel.filmsListLiveData.observe(viewLifecycleOwner, Observer<List<Film>> {
-            filmsDataBase = it
-            filmsAdapter.addItems(it)
-        })
-        viewModel.showProgressBar.observe(viewLifecycleOwner, Observer<Boolean> {
-            homeFragBinding.progressBar.isVisible = it
-        })
+        scope = CoroutineScope(Dispatchers.IO).also { scope ->
+            scope.launch {
+                viewModel.filmsListData.collect {
+                    withContext(Dispatchers.Main) {
+                        filmsAdapter.addItems(it)
+                        filmsDataBase = it
+                    }
+                }
+            }
+            scope.launch {
+                for (element in viewModel.showProgressBar) {
+                    launch(Dispatchers.Main) {
+                        homeFragBinding.progressBar.isVisible = element
+                    }
+                }
+            }
+        }
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        scope.cancel()
     }
 
     private fun initPullToRefresh() {
