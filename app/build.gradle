@@ -1,10 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-android-extensions'
+    //id 'kotlin-android-extensions'
 }
 //apply plugin: 'org.jetbrains.kotlin.android.extensions'
-//apply plugin: 'kotlin-parcelize'
+apply plugin: 'kotlin-parcelize'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -19,7 +19,6 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,13 +37,11 @@ android {
     }
     buildFeatures { viewBinding true }
 
-    androidExtensions {
+    /*androidExtensions {
         experimental = true
-    }
+    }*/
     namespace 'com.dvm.dvmproject8'
-
 }
-
 
 kapt {
     generateStubs = true
@@ -57,7 +54,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.code.gson:gson:2.9.1'
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.10'
-    implementation 'androidx.fragment:fragment-ktx:1.5.4'
+    implementation 'androidx.fragment:fragment-ktx:1.5.5'
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -85,8 +82,10 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.44'
     //Room
     def room_version = "2.4.3"
+
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
+    implementation "androidx.room:room-rxjava3:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     //noinspection GradleDependency
     implementation "androidx.room:room-runtime:$room_version"
@@ -94,9 +93,14 @@ dependencies {
     //Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
-    //Coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+
+    //RxJava
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.10'
+    implementation 'io.reactivex.rxjava3:rxkotlin:3.0.1'
+    implementation "com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0"
+
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
 
     //Tests
     testImplementation 'junit:junit:4.13.2'

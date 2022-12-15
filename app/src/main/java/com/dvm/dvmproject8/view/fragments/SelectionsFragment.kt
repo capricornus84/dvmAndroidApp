@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.dvm.dvmproject8.databinding.FragmentSelectionsBinding
 import com.dvm.dvmproject8.utils.AnimationHelper
-import kotlinx.android.synthetic.main.fragment_selections.*
+//import kotlinx.android.synthetic.main.fragment_selections.*
 
 class SelectionsFragment : Fragment() {
 
@@ -24,6 +24,6 @@ class SelectionsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        AnimationHelper.performFragmentCircularRevealAnimation(selections_fragment_root, requireActivity(), 4)
+        AnimationHelper.performFragmentCircularRevealAnimation(selFragBinding.selectionsFragmentRoot, requireActivity(), 4)
     }
 }

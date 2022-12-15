@@ -7,7 +7,7 @@ import com.dvm.dvmproject8.R
 import com.dvm.dvmproject8.databinding.ActivityMainBinding
 import com.dvm.dvmproject8.data.Entity.Film
 import com.dvm.dvmproject8.view.fragments.*
-import kotlinx.android.synthetic.main.activity_main.*
+//import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -62,8 +62,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initNavigation() {
-
-        bottom_navigation.setOnNavigationItemSelectedListener {
+        binding.bottomNavigation.setOnNavigationItemSelectedListener {
+        //bottom_navigation.setOnNavigationItemSelectedListener {
 
             when (it.itemId) {
                 R.id.home -> {

@@ -12,7 +12,7 @@ import com.dvm.dvmproject8.view.MainActivity
 import com.dvm.dvmproject8.databinding.FragmentFavoritesBinding
 import com.dvm.dvmproject8.data.Entity.Film
 import com.dvm.dvmproject8.utils.AnimationHelper
-import kotlinx.android.synthetic.main.fragment_favorites.*
+//import kotlinx.android.synthetic.main.fragment_favorites.*
 
 
 class FavoritesFragment : Fragment() {
@@ -35,7 +35,7 @@ class FavoritesFragment : Fragment() {
             //Получаем список при транзакции фрагмента
             val favoritesList: List<Film> = emptyList()
             println("onViewCreated fav1")
-            AnimationHelper.performFragmentCircularRevealAnimation(favorites_fragment_root, requireActivity(),2)
+            AnimationHelper.performFragmentCircularRevealAnimation(favFragBinding.favoritesFragmentRoot, requireActivity(),2)
             println("onViewCreated fav2")
             favFragBinding.favoritesRecycler.apply {
                 filmsAdapter = FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener {
