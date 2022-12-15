@@ -1,27 +1,28 @@
 package com.dvm.dvmproject8.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dvm.dvmproject8.App
 import com.dvm.dvmproject8.data.Entity.Film
 import com.dvm.dvmproject8.domain.Interactor
-import java.util.concurrent.Executors
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.channels.Channel
-//import org.koin.core.KoinComponent
+import io.reactivex.rxjava3.subjects.BehaviorSubject
 import javax.inject.Inject
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
+import com.dvm.dvmproject8.utils.AutoDisposable
+import com.dvm.dvmproject8.utils.addTo
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.subjects.PublishSubject
 
 //import org.koin.core.inject
 
 class HomeFragmentViewModel : ViewModel() {
     //val showProgressBar: MutableLiveData<Boolean> = MutableLiveData()
-
     //Инициализируем интерактор
     @Inject
     lateinit var interactor: Interactor
-    val filmsListData: Flow<List<Film>>
-    val showProgressBar: Channel<Boolean>
+    val filmsListData: Observable<List<Film>>
+    val showProgressBar: BehaviorSubject<Boolean>
 
     init {
         App.instance.dagger.inject(this)
