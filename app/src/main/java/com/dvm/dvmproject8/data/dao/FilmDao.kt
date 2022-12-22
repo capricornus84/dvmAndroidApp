@@ -7,6 +7,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.dvm.dvmproject8.data.Entity.Film
+import io.reactivex.rxjava3.core.Observable
 
 //Помечаем, что это не просто интерфейс а Dao объект
 @Dao
