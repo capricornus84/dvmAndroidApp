@@ -1,5 +1,7 @@
 package com.dvm.dvmproject8.data.dao
 
+import io.reactivex.rxjava3.core.Observable
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy

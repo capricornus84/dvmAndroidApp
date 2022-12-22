@@ -22,8 +22,10 @@ import com.dvm.dvmproject8.view.MainActivity
 import com.dvm.dvmproject8.view.rv_adapters.FilmListRecyclerAdapter
 import com.dvm.dvmproject8.viewmodel.HomeFragmentViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+
 import io.reactivex.rxjava3.core.ObservableOnSubscribe
 import io.reactivex.rxjava3.schedulers.Schedulers
+
 import java.util.*
 import java.util.concurrent.TimeUnit
 import io.reactivex.rxjava3.core.Observable
@@ -95,6 +97,7 @@ class HomeFragment : Fragment() {
 
     private fun initSearchView() {
         homeFragBinding.searchView.setOnClickListener {
+
             homeFragBinding.searchView.isIconified = false
         }
 
