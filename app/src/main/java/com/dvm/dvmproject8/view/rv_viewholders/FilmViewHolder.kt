@@ -3,7 +3,9 @@ package com.dvm.dvmproject8.view.rv_viewholders
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.dvm.dvmproject8.data.ApiConstants
+//import com.dvm.remote_module.entity.ApiConstants
+import com.dvm.dvmproject8.API
+import com.dvm.remote_module.entity.ApiConstants
 import com.dvm.dvmproject8.data.Entity.Film
 import com.dvm.dvmproject8.databinding.FilmItemBinding
 //import kotlinx.android.synthetic.main.film_item.view.*

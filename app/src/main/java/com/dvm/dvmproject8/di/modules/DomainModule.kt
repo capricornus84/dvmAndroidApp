@@ -2,9 +2,10 @@ package com.dvm.dvmproject8.di.modules
 
 import android.content.Context
 import com.dvm.dvmproject8.data.MainRepository
-import com.dvm.dvmproject8.data.TmdbApi
+//import com.dvm.dvmproject8.data.TmdbApi
 import com.dvm.dvmproject8.data.preferenes.PreferenceProvider
 import com.dvm.dvmproject8.domain.Interactor
+import com.dvm.remote_module.TmdbApi
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

@@ -2,17 +2,19 @@ package com.dvm.dvmproject8.di
 
 import com.dvm.dvmproject8.di.modules.DatabaseModule
 import com.dvm.dvmproject8.di.modules.DomainModule
-import com.dvm.dvmproject8.di.modules.RemoteModule
+//import com.dvm.dvmproject8.di.modules.RemoteModule
 import com.dvm.dvmproject8.viewmodel.HomeFragmentViewModel
 import com.dvm.dvmproject8.viewmodel.SettingsFragmentViewModel
+import com.dvm.remote_module.RemoteProvider
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
 @Component(
     //Внедряем все модули, нужные для этого компонента
+    dependencies = [RemoteProvider::class],
     modules = [
-        RemoteModule::class,
+        //RemoteModule::class,
         DatabaseModule::class,
         DomainModule::class
     ]
