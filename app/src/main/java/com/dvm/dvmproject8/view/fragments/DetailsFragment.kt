@@ -17,12 +17,13 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.*
 import com.bumptech.glide.Glide
 import com.dvm.dvmproject8.R
-import com.dvm.dvmproject8.data.ApiConstants
+//import com.dvm.remote_module.entity.ApiConstants
 import com.dvm.dvmproject8.data.Entity.Film
 import com.dvm.dvmproject8.databinding.FragmentDetailsBinding
 import com.dvm.dvmproject8.viewmodel.DetailsFragmentViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.*
+import com.dvm.remote_module.entity.ApiConstants
 
 class DetailsFragment : Fragment() {
 

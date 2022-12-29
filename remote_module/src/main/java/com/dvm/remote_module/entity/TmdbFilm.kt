@@ -1,4 +1,4 @@
-package com.dvm.dvmproject8.data.Entity
+package com.dvm.remote_module.entity
 
 import com.google.gson.annotations.SerializedName
 

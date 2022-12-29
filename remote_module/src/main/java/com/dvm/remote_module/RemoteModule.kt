@@ -1,8 +1,5 @@
-package com.dvm.dvmproject8.di.modules
+package com.dvm.remote_module
 
-import com.dvm.dvmproject8.BuildConfig
-import com.dvm.dvmproject8.data.ApiConstants
-import com.dvm.dvmproject8.data.TmdbApi
 import dagger.Module
 import dagger.Provides
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
@@ -10,6 +7,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import com.dvm.remote_module.entity.ApiConstants
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -28,7 +26,6 @@ class RemoteModule {
             }
         })
         .build()
-
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
@@ -41,7 +38,6 @@ class RemoteModule {
         //Добавляем кастомный клиент
         .client(okHttpClient)
         .build()
-
     @Provides
     @Singleton
     fun provideTmdbApi(retrofit: Retrofit): TmdbApi = retrofit.create(TmdbApi::class.java)
