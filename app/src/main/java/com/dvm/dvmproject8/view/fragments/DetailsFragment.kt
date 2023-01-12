@@ -20,6 +20,7 @@ import com.dvm.dvmproject8.R
 //import com.dvm.remote_module.entity.ApiConstants
 import com.dvm.dvmproject8.data.Entity.Film
 import com.dvm.dvmproject8.databinding.FragmentDetailsBinding
+import com.dvm.dvmproject8.view.notifications.NotificationHelper
 import com.dvm.dvmproject8.viewmodel.DetailsFragmentViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.*
@@ -70,6 +71,9 @@ class DetailsFragment : Fragment() {
         }
         fragbinding.detailsFabDownloadWp.setOnClickListener {
             performAsyncLoadOfPoster()
+        }
+        fragbinding.detailsFabWatchLater.setOnClickListener {
+            NotificationHelper.createNotification(requireContext(), film)
         }
     }
 
