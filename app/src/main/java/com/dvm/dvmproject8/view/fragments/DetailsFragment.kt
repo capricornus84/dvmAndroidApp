@@ -73,7 +73,7 @@ class DetailsFragment : Fragment() {
             performAsyncLoadOfPoster()
         }
         fragbinding.detailsFabWatchLater.setOnClickListener {
-            NotificationHelper.createNotification(requireContext(), film)
+            NotificationHelper.notificationSet(requireContext(), film)
         }
     }
 
