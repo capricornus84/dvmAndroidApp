@@ -13,6 +13,7 @@ android {
     compileSdkVersion 33
     buildToolsVersion '33.0.0'
     dataBinding.enabled = true
+    flavorDimensions "version"
 
     defaultConfig {
         applicationId "com.dvm.dvmproject8"
@@ -42,7 +43,34 @@ android {
         experimental = true
     }*/
     namespace 'com.dvm.dvmproject8'
+
+    productFlavors {
+        basic {
+            dimension "version"
+            applicationIdSuffix ".basic"
+            versionNameSuffix "-basic"
+        }
+        pro {
+            dimension "version"
+            applicationIdSuffix ".pro"
+            versionNameSuffix "-pro"
+        }
+    }
+    sourceSets {
+        basic {
+            java {
+                srcDirs 'src\\basic\\java'
+            }
+        }
+        pro {
+            java {
+                srcDirs 'src\\pro\\java'
+            }
+        }
+    }
 }
+
+
 
 kapt {
     generateStubs = true
