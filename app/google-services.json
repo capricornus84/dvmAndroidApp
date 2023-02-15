@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "834792089395",
+    "project_id": "dvmproject8",
+    "storage_bucket": "dvmproject8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834792089395:android:17a0db8aa0d78df5688046",
+        "android_client_info": {
+          "package_name": "com.dvm.dvmproject8"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834792089395-jqc2nb05hlpk9dassc21vb06ckm91tuk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAY84dBBC6ooGn6aRTyccNgRkMpSYlyfLw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834792089395-jqc2nb05hlpk9dassc21vb06ckm91tuk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834792089395:android:d9366c84e95605c3688046",
+        "android_client_info": {
+          "package_name": "com.dvm.dvmproject8.basic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834792089395-jqc2nb05hlpk9dassc21vb06ckm91tuk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAY84dBBC6ooGn6aRTyccNgRkMpSYlyfLw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834792089395-jqc2nb05hlpk9dassc21vb06ckm91tuk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
